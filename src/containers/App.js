@@ -3,6 +3,7 @@ import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import './App.css';
 import Scroll from '../components/Scroll';
+import ErrorBoundry from "../components/ErrorBoundry";
 //export is not default so you need to put {} and you can have multiple exports like {robots, cats}
 //import {robots} from './robots';
 
@@ -45,7 +46,10 @@ class App extends React.Component{
                     <SearchBox searchchange={this.onSearchChange} />
                     {/* <CardList robots={robots} /> */}
                     <Scroll>
-                        <CardList robots={filterdrobots} />
+                        <ErrorBoundry>
+                            <CardList robots={filterdrobots} />
+                        </ErrorBoundry>
+                        
                     </Scroll>
                     {/* card->cardlist->app */}
                 </div>
